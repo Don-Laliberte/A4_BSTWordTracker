@@ -43,8 +43,7 @@ public class BSTReferencedBased implements BSTreeADT{
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		root = null;
 	}
 
 	@Override
