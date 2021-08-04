@@ -11,7 +11,6 @@ public class BSTReferencedBased implements BSTreeADT{
 	
 
 	public BSTReferencedBased() {
-		super();
 		root = null;
 	}
 
@@ -58,7 +57,36 @@ public class BSTReferencedBased implements BSTreeADT{
 
 	@Override
 	public boolean add(Comparable entry) throws NullPointerException {
-		// TODO Auto-generated method stub
+		if (root == null) {
+			root = new BSTNode(entry);
+			return true;
+		}
+		
+		BSTNode temp = root;
+		
+		while (temp != null) {
+			if (entry.compareTo(root.getElem()) == -1 || entry.compareTo(root.getElem()) == 0) {
+				if (temp.getLeft() != null) {
+					temp = temp.getLeft();
+				}
+				else {
+					temp.setLeft(new BSTNode(entry));
+					return true;
+				}
+			}
+			
+			if (entry.compareTo(root.getElem()) == 1) {
+				if (temp.getRight() != null) {
+					temp = temp.getRight();
+				}
+				else {
+					temp.setRight(new BSTNode(entry));
+					return true;
+				}
+			}
+		}	
+		
+		
 		return false;
 	}
 
