@@ -33,8 +33,12 @@ public class BSTReferencedBased implements BSTreeADT{
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		if (root == null) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	@Override
