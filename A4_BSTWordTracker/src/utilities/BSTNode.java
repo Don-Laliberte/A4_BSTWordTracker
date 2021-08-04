@@ -20,7 +20,30 @@ public class BSTNode {
 	}
 	
 	
-	
+	public Object getElem() {
+		return elem;
+	}
+
+	public void setElem(Object elem) {
+		this.elem = elem;
+	}
+
+	public BSTNode getLeft() {
+		return left;
+	}
+
+	public void setLeft(BSTNode left) {
+		this.left = left;
+	}
+
+	public BSTNode getRight() {
+		return right;
+	}
+
+	public void setRight(BSTNode right) {
+		this.right = right;
+	}
+
 	
 
 }
