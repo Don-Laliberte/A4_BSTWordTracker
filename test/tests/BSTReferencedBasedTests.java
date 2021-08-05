@@ -20,5 +20,10 @@ class BSTReferencedBasedTests {
 	void test() {
 		fail("Not yet implemented");
 	}
+	
+	@Test
+	void testAdd() {
+		fail("Not yet implemented");
+	}
 
 }
