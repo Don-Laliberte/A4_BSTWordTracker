@@ -27,7 +27,7 @@ public class AppDriver {
                         option = command.charAt(2);
                         break;
                     default:
-                        System.out.println("ERROR: Invalid -p option!");
+                        System.out.println("ERROR: Invalid -p option! - You should give one of -pf / -po / -pl");
                         properUsage();
                         return;
                 }
@@ -47,7 +47,6 @@ public class AppDriver {
             properUsage();
             return;
         } else {
-            System.out.println(filename + option + output);
             new WordTracker(filename, option, output);
         }
     }

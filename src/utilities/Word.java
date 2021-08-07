@@ -1,13 +1,13 @@
 package utilities;
 
-public class Word {
+public class Word implements Comparable<Word> {
 	private String word;
 	private MyDLL<Location> wordList;
-	
+
 	public Word() {
 
 	}
-	
+
 	public Word(String word, MyDLL<Location> wordList) {
 		this.word = word;
 		this.wordList = wordList;
@@ -24,5 +24,11 @@ public class Word {
 	}
 	public void setWordList(MyDLL<Location> wordList) {
 		this.wordList = wordList;
+	}
+
+	@Override
+	public int compareTo(Word o) {
+		//@todo compare words
+		return 0;
 	}
 }

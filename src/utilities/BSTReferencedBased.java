@@ -4,7 +4,7 @@ import adts.BSTreeADT;
 import adts.Iterator;
 import exceptions.TreeException;
 
-public class BSTReferencedBased implements BSTreeADT{
+public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTreeADT{
 	
 	private BSTNode root;
 	private int size;
@@ -47,13 +47,11 @@ public class BSTReferencedBased implements BSTreeADT{
 
 	@Override
 	public boolean contains(Comparable entry) throws TreeException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public Comparable getEntry(Comparable entry) throws TreeException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
