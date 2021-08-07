@@ -5,7 +5,7 @@ import adts.Iterator;
 import exceptions.TreeException;
 
 public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTreeADT{
-	
+	private static final long serialVersionUID = 1L;
 	private BSTNode root;
 	private int size;
 	
