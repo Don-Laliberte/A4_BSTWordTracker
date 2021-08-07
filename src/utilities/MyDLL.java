@@ -1,11 +1,12 @@
 package utilities;
 
+import java.io.Serializable;
 import java.util.NoSuchElementException;
 
 import adts.Iterator;
 import adts.ListADT;
 
-public class MyDLL<E> implements ListADT<E> {
+public class MyDLL<E> implements ListADT<E>, Serializable {
 
 	private Node head;
 	private Node tail;

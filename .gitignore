@@ -4,3 +4,7 @@
 res/repository.ser
 
 output.txt
+
+res/testfile.txt
+
+.DS_Store

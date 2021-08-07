@@ -1,27 +1,28 @@
 package wordTracker;
 
+import exceptions.TreeException;
 import utilities.BSTReferencedBased;
+import utilities.Location;
 import utilities.Word;
 
 import java.io.*;
 import java.util.StringTokenizer;
-import java.lang.*;
 
 public class WordTracker {
+    private final String REPO = "./res/repository.ser";
     private String filename;
     private char option;
     private String output;
     private BSTReferencedBased<Word> bst = new BSTReferencedBased<>();
-    private final String REPO = "./res/repository.ser";
     private String report;
 
     public WordTracker(String filename, char option, String output) {
-        this.filename = "./res/" + filename;
+        this.filename = filename;
         this.option = option;
         this.output = output;
 
         readRepository();
-        //readFile();
+        readFile();
         saveRepository();
 
         report = makeReport();
@@ -49,18 +50,32 @@ public class WordTracker {
         String line;
         int lineNumber = 0;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("./res/" + filename))) {
             while ((line = br.readLine()) != null) {
                 lineNumber++;
                 StringTokenizer st = new StringTokenizer(line);
                 while (st.hasMoreTokens()) {
-                    String word = st.nextToken();
-                    // @todo check if "bst" contains "word" and add it to "bst" with "filename" and "lineNumber"
+                    String wordStr = st.nextToken();
+                    Word word = new Word(wordStr);
+                    Location location = new Location(filename, lineNumber);
+
+                    if (bst.contains(word)) {
+                        word = bst.getEntry(word);
+
+                        if (!word.contains(location)) {
+                            word.addLocation(location);
+                        }
+                    } else {
+                        word.addLocation(location);
+                        bst.add(word);
+                    }
                 }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TreeException e) {
             e.printStackTrace();
         }
     }
@@ -80,18 +95,18 @@ public class WordTracker {
         StringBuilder sb = new StringBuilder();
 
         switch (option) {
-            case 'f' :
+            case 'f':
                 // @todo print in alphabetic order all words along with the corresponding list of files in which the words occur
                 break;
-            case 'l' :
+            case 'l':
                 // @todo print in alphabetic order all words along with the corresponding list of files and numbers
                 // of the lines in which the word occur
                 break;
-            case 'o' :
+            case 'o':
                 // @todo print in alphabetic order all words along with the corresponding list of files, numbers of
                 // the lines in which the word occur and the frequency of occurrence of the words.
                 break;
-            default :
+            default:
                 System.out.println("ERROR: This should not be called.");
                 break;
         }

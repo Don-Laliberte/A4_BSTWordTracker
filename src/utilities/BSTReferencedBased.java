@@ -47,11 +47,13 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 
 	@Override
 	public boolean contains(Comparable entry) throws TreeException {
+		//@todo to be implemented using Iterators. Traverse and compare using entry.getWord() and return true if found.
 		return false;
 	}
 
 	@Override
-	public Comparable getEntry(Comparable entry) throws TreeException {
+	public E getEntry(Comparable entry) throws TreeException {
+		//@todo to be implemented using Iterators. Traverse and compare using entry.getWord() and return that node's word if found.
 		return null;
 	}
 

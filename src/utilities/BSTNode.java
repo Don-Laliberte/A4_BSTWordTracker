@@ -1,6 +1,8 @@
 package utilities;
 
-public class BSTNode {
+import java.io.Serializable;
+
+public class BSTNode implements Serializable {
 	
 	private Object elem;
 	private BSTNode left;

@@ -1,12 +1,12 @@
 package utilities;
 
-public class Location {
+import java.io.Serializable;
+
+public class Location implements Serializable {
 
 	private String filename;
 	private int line;
-	
-	
-	
+
 	public Location(String filename, int line) {
 		this.filename = filename;
 		this.line = line;
@@ -15,13 +15,7 @@ public class Location {
 	public String getFilename() {
 		return filename;
 	}
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
 	public int getLine() {
 		return line;
-	}
-	public void setLine(int line) {
-		this.line = line;
 	}
 }

@@ -1,18 +1,21 @@
 package utilities;
 
-public class Word implements Comparable<Word> {
+import java.io.Serializable;
+
+public class Word implements Comparable<Word>, Serializable {
 	private String word;
 	private MyDLL<Location> wordList;
 
-	public Word() {
-
+	public Word(String wordStr) {
+		this.word = wordStr;
+		wordList = new MyDLL<>();
 	}
 
 	public Word(String word, MyDLL<Location> wordList) {
 		this.word = word;
 		this.wordList = wordList;
 	}
-	
+
 	public String getWord() {
 		return word;
 	}
@@ -24,6 +27,14 @@ public class Word implements Comparable<Word> {
 	}
 	public void setWordList(MyDLL<Location> wordList) {
 		this.wordList = wordList;
+	}
+
+	public boolean contains(Location location) {
+		return wordList.contains(location);
+	}
+
+	public boolean addLocation(Location location) {
+		return wordList.add(location);
 	}
 
 	@Override
