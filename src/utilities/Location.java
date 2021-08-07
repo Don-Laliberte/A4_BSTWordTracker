@@ -7,11 +7,7 @@ public class Location {
 	
 	
 	
-	public Location() {
-	}
-
 	public Location(String filename, int line) {
-		super();
 		this.filename = filename;
 		this.line = line;
 	}
