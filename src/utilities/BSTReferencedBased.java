@@ -7,7 +7,7 @@ import exceptions.TreeException;
 public class BSTReferencedBased implements BSTreeADT{
 	
 	private BSTNode root;
-	
+	private int size;
 	
 
 	public BSTReferencedBased() {
@@ -21,14 +21,12 @@ public class BSTReferencedBased implements BSTreeADT{
 
 	@Override
 	public Comparable getRootData() throws TreeException {
-		// TODO Auto-generated method stub
-		return null;
+		return (Comparable) root.getElem();
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
 
 	@Override
@@ -43,6 +41,7 @@ public class BSTReferencedBased implements BSTreeADT{
 
 	@Override
 	public void clear() {
+		size = 0;
 		root = null;
 	}
 
@@ -62,6 +61,7 @@ public class BSTReferencedBased implements BSTreeADT{
 	public boolean add(Comparable entry) throws NullPointerException {
 		if (root == null) {
 			root = new BSTNode(entry);
+			size++;
 			return true;
 		}
 		
@@ -74,6 +74,7 @@ public class BSTReferencedBased implements BSTreeADT{
 				}
 				else {
 					temp.setLeft(new BSTNode(entry));
+					size++;
 					return true;
 				}
 			}
@@ -84,6 +85,7 @@ public class BSTReferencedBased implements BSTreeADT{
 				}
 				else {
 					temp.setRight(new BSTNode(entry));
+					size++;
 					return true;
 				}
 			}
