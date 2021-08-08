@@ -37,7 +37,7 @@ class BSTReferencedBasedTests {
 		bst1.add("a");
 		bst1.add("b");
 
-		assertEquals("a", bst1.getEntry("a"));
+		assertEquals("a", (bst1.getEntry("a")));
 	}
 
 	@Test
@@ -81,8 +81,8 @@ class BSTReferencedBasedTests {
 
 	@Test
 	void testContains() throws TreeException {
-		fail("partially implemented");
-		/*
+
+		
 		bst1.add("a");
 		bst1.add("b");		
 		bst1.add("c");
@@ -92,7 +92,7 @@ class BSTReferencedBasedTests {
 		assertTrue(bst1.contains("c")); // middle
 		assertTrue(bst1.contains("d")); // end
 		assertFalse(bst1.contains("z")); // does not contain
-		*/
+		
 
 	}
 	

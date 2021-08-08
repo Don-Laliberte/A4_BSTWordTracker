@@ -50,8 +50,8 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 		Iterator inorder = inorderIterator();
 		
 		while (inorder.hasNext()) {
-			BSTNode node = (BSTNode) inorder.next();
-			if (node.getElem().equals(entry)) {
+			E elem = (E) inorder.next();
+			if (elem.equals(entry)) {
 				return true;
 			}
 		}
@@ -64,9 +64,9 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 		Iterator inorder = inorderIterator();
 		
 		while (inorder.hasNext()) {
-			BSTNode node = (BSTNode) inorder.next();
-			if (node.getElem().equals(entry)) {
-				return (E) node.getElem();
+			E elem = (E) inorder.next();
+			if (elem.equals(entry)) {
+				return (E) elem;
 			}
 		}
 		throw new TreeException();
