@@ -8,22 +8,27 @@ import org.junit.jupiter.api.Test;
 
 import exceptions.TreeException;
 import utilities.BSTReferencedBased;
+import utilities.Word;
+import adts.Iterator;
 
 class BSTReferencedBasedTests {
 
 	BSTReferencedBased<String> bst1;
 	BSTReferencedBased<String> bst2;
+	BSTReferencedBased<Word> bst3;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		bst1 = new BSTReferencedBased<String>();
 		bst2 = new BSTReferencedBased<String>();
+		bst3 = new BSTReferencedBased<Word>();
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		bst1.clear();
 		bst2.clear();
+		bst3.clear();
 	}
 	
 	@Test
@@ -118,6 +123,19 @@ class BSTReferencedBasedTests {
 		*/
 	}
 
-
+	@Test
+	void testInOrderIterator() throws TreeException {
+		Word word1 = new Word("a");
+		Word word2 = new Word("b");
+		Word word3 = new Word("c");
+		bst3.add(word1);
+		bst3.add(word2);
+		bst3.add(word3);
+		Iterator inorder = bst3.inorderIterator();
+		assertTrue(inorder.hasNext());
+		assertTrue(((Word) inorder.next()).getWord().equals(word1.getWord()));
+	    assertTrue(((Word) inorder.next()).getWord().equals(word2.getWord()));
+		assertTrue(((Word) inorder.next()).getWord().equals(word3.getWord()));
+	}
 
 }
