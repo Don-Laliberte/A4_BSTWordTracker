@@ -169,7 +169,7 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 			
 			@Override
 			public boolean hasNext() {
-				if (initialized == false) { //initializes the tree by moving farthest left on first call. This is always going to run upon first call
+				if (initialized == false) { //initializes the tree by setting the root as the topmost element
 					initialize();
 					initialized = true;
 				}
@@ -185,12 +185,12 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 			
 			public void iterate() throws NoSuchElementException { //Moves current to the next element
 				
-				BSTNode tempNode = travStack.pop(); //takes farthest left node and stores it's right child in temp node
+				BSTNode tempNode = travStack.pop(); //takes current node and pops it, storing it in a temp node
 				if (tempNode.getRight() != null) {
-					travStack.push(tempNode.getRight());
+					travStack.push(tempNode.getRight()); //makes right node second highest on stack after that iterate method
 				}
 				if (tempNode.getLeft() != null) {
-					travStack.push(tempNode.getLeft());
+					travStack.push(tempNode.getLeft()); //makes left node the topmost and current element in the stack
 				}
 			}
 			
@@ -249,7 +249,7 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 			public Object next() throws NoSuchElementException {
 				if (hasNext() == true) { //Checks if there is a next element
 					BSTNode returnValue = outStack.peek(); //stores the topmost node on stack
-					outStack.pop();
+					outStack.pop(); //pops the out stack
 					return returnValue.getElem(); //returns the stored value
 				}
 				else {

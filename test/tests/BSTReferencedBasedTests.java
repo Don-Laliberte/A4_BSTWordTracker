@@ -16,16 +16,16 @@ class BSTReferencedBasedTests {
 	BSTReferencedBased<String> bst1;
 	BSTReferencedBased<String> bst2;
 	BSTReferencedBased<Word> bst3;
-	BSTReferencedBased<Word> bst4;
-	BSTReferencedBased<Word> bst5;
+	BSTReferencedBased<Integer> bst4;
+	BSTReferencedBased<Integer> bst5;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		bst1 = new BSTReferencedBased<String>();
 		bst2 = new BSTReferencedBased<String>();
 		bst3 = new BSTReferencedBased<Word>();
-		bst4 = new BSTReferencedBased<Word>();
-		bst5 = new BSTReferencedBased<Word>();
+		bst4 = new BSTReferencedBased<Integer>();
+		bst5 = new BSTReferencedBased<Integer>();
 	}
 
 	@AfterEach
@@ -151,7 +151,7 @@ class BSTReferencedBasedTests {
 		assertTrue(preorder.hasNext());
 		assertTrue(((Word) preorder.next()).getWord().equals(word1.getWord()));
 	    assertTrue(((Word) preorder.next()).getWord().equals(word2.getWord()));
-		assertTrue(((Word) preorder.next()).getWord().equals(word3.getWord()));
+		assertTrue(((Word) preorder.next()).getWord().equals(word3.getWord()));    
 	}
 	
 	@Test
@@ -164,9 +164,9 @@ class BSTReferencedBasedTests {
 		bst5.add(word3);
 		Iterator postorder = bst5.postorderIterator();
 		assertTrue(postorder.hasNext());
+		assertTrue(((Word) postorder.next()).getWord().equals(word3.getWord()));
+	    assertTrue(((Word) postorder.next()).getWord().equals(word2.getWord()));
 		assertTrue(((Word) postorder.next()).getWord().equals(word1.getWord()));
-	    assertTrue(((Word) postorder.next()).getWord().equals(word3.getWord()));
-		assertTrue(((Word) postorder.next()).getWord().equals(word2.getWord()));
 	}
 
 }
