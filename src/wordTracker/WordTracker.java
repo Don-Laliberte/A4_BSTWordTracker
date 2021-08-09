@@ -1,5 +1,6 @@
 package wordTracker;
 
+import adts.Iterator;
 import exceptions.TreeException;
 import utilities.BSTReferencedBased;
 import utilities.Location;
@@ -93,10 +94,16 @@ public class WordTracker {
 
     private String makeReport() {
         StringBuilder sb = new StringBuilder();
+        Iterator inorder = bst.inorderIterator();
 
         switch (option) {
             case 'f':
                 // @todo print in alphabetic order all words along with the corresponding list of files in which the words occur
+                while(inorder.hasNext()) {
+                    Word word = (Word) inorder.next();
+                    sb.append( word.getWord() + " : " + System.lineSeparator());
+                }
+
                 break;
             case 'l':
                 // @todo print in alphabetic order all words along with the corresponding list of files and numbers
