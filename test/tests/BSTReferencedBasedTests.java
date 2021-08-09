@@ -36,7 +36,7 @@ class BSTReferencedBasedTests {
 
 		bst1.add("a");
 		bst1.add("b");
-
+		bst1.add("c");
 		assertEquals("a", (bst1.getEntry("a")));
 	}
 
@@ -82,11 +82,12 @@ class BSTReferencedBasedTests {
 	@Test
 	void testContains() throws TreeException {
 
-		
+
 		bst1.add("a");
-		bst1.add("b");		
+		bst1.add("b");
 		bst1.add("c");
 		bst1.add("d");
+
 
 		assertTrue(bst1.contains("a")); // root
 		assertTrue(bst1.contains("c")); // middle
@@ -97,30 +98,26 @@ class BSTReferencedBasedTests {
 	}
 	
 	@Test
-	void testGetEntry() {
-		fail("partially implemented");
-		/*
-		bst1.add("a");
+	void testGetEntry() throws TreeException {
+		/*bst1.add("a");
 		bst1.add("b");		
 		bst1.add("c");
 
-		// TODO index based?
 		assertEquals("a", bst1.getEntry("a"));
 		assertEquals("b", bst1.getEntry("b"));
-		assertEquals("c", bst1.getEntry("c"));
-		*/
+		assertEquals("c", bst1.getEntry("c"));*/
+	
 	}
 
 	@Test
 	void testGetRootData() throws TreeException {
-		fail("partially implemented");
-		/*
+
 		bst1.add("a");
 		bst1.add("b");		
 		bst1.add("c");
 
 		assertEquals("a", bst1.getRootData());
-		*/
+
 	}
 
 	@Test

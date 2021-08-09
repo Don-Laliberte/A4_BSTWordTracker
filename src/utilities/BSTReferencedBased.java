@@ -55,7 +55,7 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 				return true;
 			}
 		}
-		throw new TreeException();
+		return false;
 	}
 
 	@SuppressWarnings("unchecked")
