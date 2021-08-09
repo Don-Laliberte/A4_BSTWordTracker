@@ -95,27 +95,40 @@ public class WordTracker {
     private String makeReport() {
         StringBuilder sb = new StringBuilder();
         Iterator inorder = bst.inorderIterator();
+        Iterator locIterator;
 
-        switch (option) {
-            case 'f':
-                // @todo print in alphabetic order all words along with the corresponding list of files in which the words occur
-                while(inorder.hasNext()) {
-                    Word word = (Word) inorder.next();
-                    sb.append( word.getWord() + " : " + System.lineSeparator());
+        while (inorder.hasNext()) {
+            int frequency = 0;
+            String lineNumber = "";
+            String filename = "";
+            Word word = (Word) inorder.next();
+            locIterator = word.getWordList().iterator();
+
+            while (locIterator.hasNext()) {
+                Location loc = (Location) locIterator.next();
+                if (!filename.equals("")) {
+                    if (option == 'f') {
+                        if (filename.equals(loc.getFilename())) {
+                            continue;
+                        }
+                    }
+                    filename += ", ";
+
                 }
+                filename += loc.getFilename();
 
-                break;
-            case 'l':
-                // @todo print in alphabetic order all words along with the corresponding list of files and numbers
-                // of the lines in which the word occur
-                break;
-            case 'o':
-                // @todo print in alphabetic order all words along with the corresponding list of files, numbers of
-                // the lines in which the word occur and the frequency of occurrence of the words.
-                break;
-            default:
-                System.out.println("ERROR: This should not be called.");
-                break;
+                if (option == 'l' || option == 'o') {
+                    filename += ":" + loc.getLine();
+                }
+                frequency++;
+            }
+
+            if (option == 'o') {
+                sb.append(word.getWord() + " (x" + frequency + ")" + " - " + filename + System.lineSeparator());
+            } else {
+                sb.append(word.getWord() + " - " + filename + System.lineSeparator());
+
+            }
         }
 
         return sb.toString();
