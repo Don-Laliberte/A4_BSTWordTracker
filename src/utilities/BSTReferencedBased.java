@@ -83,7 +83,7 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 		BSTNode temp = root;
 
 		while (temp != null) {
-			if (entry.compareTo(temp.getElem()) == -1 || entry.compareTo(temp.getElem()) == 0) {
+			if (entry.compareTo(temp.getElem()) < 0 || entry.compareTo(temp.getElem()) == 0) {
 				if (temp.getLeft() != null) {
 					temp = temp.getLeft();
 				} else {
@@ -91,7 +91,7 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 					size++;
 					return true;
 				}
-			} else if (entry.compareTo(temp.getElem()) == 1) {
+			} else if (entry.compareTo(temp.getElem()) > 0) {
 				if (temp.getRight() != null) {
 					temp = temp.getRight();
 				} else {
