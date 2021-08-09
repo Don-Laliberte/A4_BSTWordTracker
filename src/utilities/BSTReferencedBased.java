@@ -212,8 +212,54 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 
 	@Override
 	public Iterator postorderIterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Iterator() {
+
+			private MyStack<BSTNode> travStack = new MyStack<BSTNode>(); // used for tracking traversal
+			private MyStack<BSTNode> outStack = new MyStack<BSTNode>(); // used to store the traversal
+			BSTNode current = root;
+			boolean initialized = false;
+			
+			
+			@Override
+			public boolean hasNext() {
+				if (initialized == false) { //initializes the tree by traversing in postorder and storing in a stack
+					initialize();
+					initialized = true;
+				}
+				return !outStack.isEmpty();
+			}
+			
+			public void initialize() {
+				travStack.push(current);
+				
+				while(!travStack.isEmpty()) {
+					BSTNode tempNode = travStack.pop();
+					outStack.push(tempNode);
+					if (tempNode.getLeft() != null) {
+						travStack.push(tempNode.getLeft());
+					}
+					if (tempNode.getRight() != null) {
+						travStack.push(tempNode.getRight());
+					}
+				}
+			}
+			
+			
+			
+			public Object next() throws NoSuchElementException {
+				if (hasNext() == true) { //Checks if there is a next element
+					BSTNode returnValue = outStack.peek(); //stores the topmost node on stack
+					outStack.pop();
+					return returnValue.getElem(); //returns the stored value
+				}
+				else {
+					throw new NoSuchElementException();
+				}
+
+			}
+
+			
+		};
 	}
 
 }
