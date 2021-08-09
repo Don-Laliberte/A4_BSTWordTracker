@@ -18,4 +18,13 @@ public class Location implements Serializable {
 	public int getLine() {
 		return line;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Location o = (Location) obj;
+		if (filename == o.getFilename() && line == o.getLine()) {
+			return true;
+		}
+		return false;
+	}
 }

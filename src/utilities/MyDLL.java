@@ -232,7 +232,7 @@ public class MyDLL<E> implements ListADT<E>, Serializable {
 		if(!isEmpty()) {
 			Node current = head;
 			for (int i = 0; i < size(); i++) {
-				if(current.getData() == toFind) {
+				if(current.getData().equals(toFind)) {
 					return true;
 				}
 				else {

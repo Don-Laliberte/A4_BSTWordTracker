@@ -48,4 +48,9 @@ public class Word implements Comparable<Word>, Serializable {
             return 1;
         } else return 0;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return word.compareTo(((Word) o).getWord()) == 0 ? true : false;
+    }
 }
