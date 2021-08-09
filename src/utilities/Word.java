@@ -7,12 +7,12 @@ public class Word implements Comparable<Word>, Serializable {
     private MyDLL<Location> wordList;
 
     public Word(String wordStr) {
-        this.word = parseString(wordStr);
+        this.word = wordStr;
         wordList = new MyDLL<>();
     }
 
     public Word(String word, MyDLL<Location> wordList) {
-        this.word = parseString(word);
+        this.word = word;
         this.wordList = wordList;
     }
 
@@ -21,7 +21,7 @@ public class Word implements Comparable<Word>, Serializable {
     }
 
     public void setWord(String word) {
-        this.word = parseString(word);
+        this.word = word;
     }
 
     public MyDLL<Location> getWordList() {
@@ -39,10 +39,6 @@ public class Word implements Comparable<Word>, Serializable {
     public boolean addLocation(Location location) {
         return wordList.add(location);
     }
-    
-	public String parseString(String input) {
-		return input.replaceAll("[^a-zA-Z0-9 ]", "");
-	}
 
     @Override
     public int compareTo(Word o) {

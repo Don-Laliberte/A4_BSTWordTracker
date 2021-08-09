@@ -56,7 +56,7 @@ public class WordTracker {
                 lineNumber++;
                 StringTokenizer st = new StringTokenizer(line);
                 while (st.hasMoreTokens()) {
-                    String wordStr = st.nextToken();
+                    String wordStr = st.nextToken().replaceAll("[^a-zA-Z0-9 ]", "");
                     Word word = new Word(wordStr);
                     Location location = new Location(filename, lineNumber);
 
