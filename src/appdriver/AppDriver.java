@@ -2,8 +2,28 @@ package appdriver;
 
 import wordTracker.WordTracker;
 
+/**
+ * Runner Class for our application. Decodes given arguments and begins the word tracker
+ * 
+ * @author Don Laliberte
+ * @author Elie Kabengele
+ * @author Jared Smith
+ * @author Jaekyung Jeon
+ * @version August 9th 2021
+ *
+ */
 public class AppDriver {
+    
     public static void main(String[] args) {
+        parseArgs(args);
+    }
+
+    /**
+     * Decodes Provided Command Line Arguments and gives helpful feedback for errors
+     * If no errors occur it instansiates a new WordTracker and continues from there
+     * @param args command line arugmnents
+     */
+    private static void parseArgs(String[] args) {
         String filename = null;
         String output = null;
         char option = 'a';
