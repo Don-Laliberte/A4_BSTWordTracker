@@ -2,13 +2,21 @@ package wordTracker;
 
 import adts.Iterator;
 import exceptions.TreeException;
-import utilities.BSTReferencedBased;
-import utilities.Location;
-import utilities.Word;
+import utilities.*;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
+/** WordTracker class used for accessing previous repository and reading and writing to files 
+ * All reports are generated here after specifications are confirmed in the appDriver
+ * 
+ * @author Don Laliberte
+ * @author Elie Kabengele
+ * @author Jared Smith
+ * @author Jaekyung Jeon
+ * @version August 9th 2021
+ *
+ */
 public class WordTracker {
     private final String REPO = "./res/repository.ser";
     private String filename;
@@ -133,7 +141,7 @@ public class WordTracker {
 
         return sb.toString();
     }
-
+    
     private void saveOutput() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(output))) {
             bw.write(report);
