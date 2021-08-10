@@ -11,6 +11,16 @@ import utilities.BSTReferencedBased;
 import utilities.Word;
 import adts.Iterator;
 
+/**
+ * Testing Suite used to test functionality of our implemented BST
+ * 
+ * @author Don Laliberte
+ * @author Elie Kabengele
+ * @author Jared Smith
+ * @author Jaekyung Jeon
+ * @version August 9th 2021
+ *
+ */
 class BSTReferencedBasedTests {
 
 	/*Initalize our trees for testing use later on*/
@@ -163,17 +173,23 @@ class BSTReferencedBasedTests {
 	 */
 	@Test
 	void testInOrderIterator() throws TreeException {
-		Word word1 = new Word("a");
-		Word word2 = new Word("b");
-		Word word3 = new Word("c");
-		bst3.add(word1);
-		bst3.add(word2);
-		bst3.add(word3);
+
+		// setup for tests 
+		String[] testStrings = new String[] {"p", "h", "s", "t", "g", "l", "z", "r"}; // this is given input
+		String[] expectedInorder = new String[] {"g", "h", "l", "p", "r", "s", "t", "z"}; // this is what output should be 
+
+		for (int i = 0; i < testStrings.length; i++) {
+			bst3.add((Word) new Word(testStrings[i]));
+		}
+		
+		// begin testing against expected output
 		Iterator inorder = bst3.inorderIterator();
-		assertTrue(inorder.hasNext());
-		assertTrue(((Word) inorder.next()).getWord().equals(word1.getWord()));
-	    assertTrue(((Word) inorder.next()).getWord().equals(word2.getWord()));
-		assertTrue(((Word) inorder.next()).getWord().equals(word3.getWord()));
+
+		while (inorder.hasNext()) {
+			for (int i = 0; i < expectedInorder.length; i++) {
+				assertTrue(((Word) inorder.next()).getWord().equals(expectedInorder[i]));
+			}
+		}
 	}
 
 	/**
@@ -182,36 +198,46 @@ class BSTReferencedBasedTests {
 	 */
 	@Test
 	void testPreOrderIterator() throws TreeException {
-		Word word1 = new Word("a");
-		Word word2 = new Word("b");
-		Word word3 = new Word("c");
-		bst4.add(word1);
-		bst4.add(word2);
-		bst4.add(word3);
-		Iterator preorder = bst4.preorderIterator();
-		assertTrue(preorder.hasNext());
-		assertTrue(((Word) preorder.next()).getWord().equals(word1.getWord()));
-	    assertTrue(((Word) preorder.next()).getWord().equals(word2.getWord()));
-		assertTrue(((Word) preorder.next()).getWord().equals(word3.getWord()));    
+		// setup for tests 
+		String[] testStrings = new String[] {"p", "h", "s", "t", "g", "l", "z", "r"}; // this is given input
+		String[] expectedInorder = new String[] {"p", "h", "g", "l", "s", "r", "t", "z"}; // this is what output should be 
+
+		for (int i = 0; i < testStrings.length; i++) {
+			bst3.add((Word) new Word(testStrings[i]));
+		}
+		
+		// begin testing against expected output
+		Iterator preorder = bst3.preorderIterator();
+
+		while (preorder.hasNext()) {
+			for (int i = 0; i < expectedInorder.length; i++) {
+				assertTrue(((Word) preorder.next()).getWord().equals(expectedInorder[i]));
+			}
+		}
 	}
 	
-	/**
+	/** 
 	 * Tests the PostOrder Iterator for BSTRefrence where we traverse the tree PostOrder
 	 * @throws TreeException
 	 */
 	@Test
 	void testPostOrderIterator() throws TreeException {
-		Word word1 = new Word("a");
-		Word word2 = new Word("b");
-		Word word3 = new Word("c");
-		bst5.add(word1);
-		bst5.add(word2);
-		bst5.add(word3);
-		Iterator postorder = bst5.postorderIterator();
-		assertTrue(postorder.hasNext());
-		assertTrue(((Word) postorder.next()).getWord().equals(word3.getWord()));
-	    assertTrue(((Word) postorder.next()).getWord().equals(word2.getWord()));
-		assertTrue(((Word) postorder.next()).getWord().equals(word1.getWord()));
+		// setup for tests 
+		String[] testStrings = new String[] {"p", "h", "s", "t", "g", "l", "z", "r"}; // this is given input
+		String[] expectedInorder = new String[] {"g", "l", "h", "r", "z", "t", "s", "p"}; // this is what output should be 
+
+		for (int i = 0; i < testStrings.length; i++) {
+			bst3.add((Word) new Word(testStrings[i]));
+		}
+		
+		// begin testing against expected output
+		Iterator postorder = bst3.postorderIterator();
+
+		while (postorder.hasNext()) {
+			for (int i = 0; i < expectedInorder.length; i++) {
+				assertTrue(((Word) postorder.next()).getWord().equals(expectedInorder[i]));
+			}
+		}
 	}
 
 }
