@@ -16,7 +16,7 @@ public class Word implements Comparable<Word>, Serializable {
     private MyDLL<Location> wordList;
 
     /**
-     * Constructor for Word Object used to instansiate word objects without a location
+     * Constructor for Word Object used to instantiate word objects without a location
      * @param wordStr string to set
      */
     public Word(String wordStr) {
@@ -24,6 +24,11 @@ public class Word implements Comparable<Word>, Serializable {
         wordList = new MyDLL<>();
     }
 
+    /**
+     * Constructor for Word Object used to instantiate word objects with a location
+     * @param wotf string to set
+     * @param wordList location to set
+     */
     public Word(String word, MyDLL<Location> wordList) {
         this.word = word;
         this.wordList = wordList;
