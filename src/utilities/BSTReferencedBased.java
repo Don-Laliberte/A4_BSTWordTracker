@@ -6,30 +6,57 @@ import adts.BSTreeADT;
 import adts.Iterator;
 import exceptions.TreeException;
 
+/** Implementation of our BST data structure. This is used to create new trees as well as modify the tree structure.
+ * 
+ * @author Don Laliberte
+ * @author Elie Kabengele
+ * @author Jared Smith
+ * @author Jaekyung Jeon
+ * @version August 9th 2021
+ *
+ */
 public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTreeADT {
 	private static final long serialVersionUID = 1L;
 	private BSTNode root;
 	private int size;
 
+	/** Default Constructor for BSTReferencedBased, instansiates root as nulll 
+	*/
 	public BSTReferencedBased() {
 		root = null;
 	}
 
+	/**
+	 * Constructor for BSTReferencedBased, instansiates root as given.
+	 * @param root given root to set
+	 */
 	public BSTReferencedBased(BSTNode root) {
 		super();
 		this.root = root;
 	}
 
+	/**
+	 * Returns the data for the root node.
+	 * @return the data for the root
+	 */
 	@Override
 	public Comparable getRootData() throws TreeException {
 		return (Comparable) root.getElem();
 	}
 
+	/**
+	 * Returns the number of nodes in tree
+	 * @return number of nodes in tree
+	 */
 	@Override
 	public int size() {
 		return size;
 	}
 
+	/**
+	 * Used to verify if a tree has nodes
+	 * @return true if the tree has nodes, otherwise false
+	 */
 	@Override
 	public boolean isEmpty() {
 		if (root == null) {
@@ -39,12 +66,21 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 		}
 	}
 
+	/**
+	 * Clears the tree of all nodes 
+	 */
 	@Override
 	public void clear() {
 		size = 0;
 		root = null;
 	}
 
+	/**
+	 * Checks for an Entry in the Tree
+	 * @throws TreeException if the BST is empty and contains zero elements
+	 * @param entry to search for
+	 * @return returns true if the entry is found, false otherwise
+	 */
 	@Override
 	public boolean contains(Comparable entry) throws TreeException {
 		Iterator inorder = inorderIterator();
@@ -58,6 +94,12 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 		return false;
 	}
 
+	/**
+	 * Used to Iterate through the tree in search of a specific entry
+	 * @throws TreeException if the BST is empty and contains zero elements
+	 * @param entry to locate
+	 * @return located entry 
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public E getEntry(Comparable entry) throws TreeException {
@@ -72,6 +114,10 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 		throw new TreeException();
 	}
 
+	/** Add method for tree used to link new nodes
+	 * @param entry entry to add to tree
+	 * @return true if successful, false otherwise.
+	 */
 	@Override
 	public boolean add(Comparable entry) throws NullPointerException {
 		if (root == null) {
@@ -105,6 +151,10 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 		return false;
 	}
 
+	/**
+	 * inorder iterator implementation allows us to navigate the tree inorder
+	 * @return returns new inorder Iterator Object 
+	 */
 	@Override
 	public Iterator inorderIterator() {
 		return new Iterator() {
@@ -157,6 +207,10 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 		};
 	}
 
+	/**
+	 * preorder iterator implementation allows us to navigate the tree preorder
+	 * @return returns new preorder Iterator Object 
+	 */
 	@Override
 	public Iterator preorderIterator() {
 		
@@ -210,6 +264,10 @@ public class BSTReferencedBased<E extends Comparable<? super E>> implements BSTr
 		};
 	}
 
+	/**
+	 * postorder iterator implementation allows us to navigate the tree postorder
+	 * @return returns new postorder Iterator Object 
+	 */
 	@Override
 	public Iterator postorderIterator() {
 		return new Iterator() {
