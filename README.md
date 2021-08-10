@@ -31,7 +31,7 @@ now be where the file is currently located
         -pl - to print in alphanumeric order each word with the file it was found in beside AND number of lines where the word occurs
         -po - to print in alphanumeric order each word with the file it was found in beside AND both number and frequency where each word occurs 
 
-The command you type in should look something like this: java -jar sort.jar "textfile.txt" "-foutput.txt" -pl
+The command you type in should look something like this: java -jar Tracker.jar "textfile.txt" "-foutput.txt" -pl
 
 WARNING: 
 - Filename notated by a "-f" prefix MUST be surrounded by quotes in order for it to work correctly from command line. It should look something like this "-foutput.txt"
